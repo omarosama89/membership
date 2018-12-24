@@ -1,0 +1,15 @@
+<div class="col-lg-12 col-md-12 mb-12">
+  <div class="card h-100">
+    <%= render 'products/images_slider', product: @product %>
+    <h5 class="card-title">
+      <span class="badge">Name: </span>
+      <%= link_to @product.name, admin_product_path(@product) %>
+    </h5>
+    <h5><span class="badge">Price: </span> $ <%= @product.price %></h5>
+    <h5><span class="badge">Discount: </span> <%= @product.discount %>&nbsp;%</h5>
+    <h6><span class="badge">Discounted Price: </span>$ <%= @product.discounted_price %></h6>
+  </div>
+  <br>
+  <%= link_to 'Back', admin_products_path, class: 'btn btn-info' %>
+  <%= link_to 'Edit', edit_admin_product_path(@product), class: 'btn btn-primary' %>
+</div>

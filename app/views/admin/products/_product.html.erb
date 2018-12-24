@@ -1,0 +1,22 @@
+<div class="col-lg-4 col-md-6 mb-4">
+  <div class="card h-100">
+    <%= render "admin/products/images_slider_thumb", product: product %>
+    <div class="card-body">
+      <h5 class="card-title">
+        <span class="badge">Name: </span>
+        <%= link_to product.name, admin_product_path(product) %>
+      </h5>
+      <h5><span class="badge">Price: </span> $ <%= product.price %></h5>
+      <h5><span class="badge">Discount: </span> <%= product.discount %>&nbsp;%</h5>
+      <h6><span class="badge">Discounted Price: </span>$ <%= product.discounted_price %></h6>
+    </div>
+    <div class="card-footer">
+      <%= link_to edit_admin_product_path(product) do %>
+        <i class="fa fa-edit"></i>
+      <% end %>
+      <%= link_to admin_product_path(product), method: :delete, data: {confirm: 'Are you sure?'} do %>
+        <i class="fa fa-trash"></i>
+      <% end %>
+    </div>
+  </div>
+</div>
