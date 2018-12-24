@@ -6,16 +6,21 @@
       <h4 class="card-title">
         <%= link_to product.name, product_path(product) %>
       </h4>
-      <h5>$ <%= product.price %></h5>
-    </div>
-    <div class="card-footer">
-      <%= link_to edit_product_path(product) do %>
-        <i class="fa fa-edit"></i>
-      <% end %>
-      &nbsp;
-      <%= link_to product, method: :delete, data: {confirm: 'Are you sure?'} do %>
-        <i class="fa fa-trash"></i>
+      <% if current_user.premium_member? %>
+        <h5><strike>$ <%= product.price %></strike>&nbsp;<span class="discounted">$  <%= product.price %></span></h5>
+      <% else %>
+        <h5>$ <%= product.price %></h5>
       <% end %>
     </div>
+    <% if current_user.admin? %>
+      <div class="card-footer">
+        <%= link_to edit_product_path(product) do %>
+          <i class="fa fa-edit"></i>
+        <% end %>
+        <%= link_to product, method: :delete, data: {confirm: 'Are you sure?'} do %>
+          <i class="fa fa-trash"></i>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>
