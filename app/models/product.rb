@@ -1,7 +1,7 @@
 class Product < ApplicationRecord
   mount_uploaders :images, ImageUploader
 
-  validates :name, :price, :images, presence: true
+  validates :name, :price, :images, :discount, presence: true
 
   attribute :discount, :float, default: 0
 
