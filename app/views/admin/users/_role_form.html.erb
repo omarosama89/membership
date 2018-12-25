@@ -1,0 +1,29 @@
+<% if user.admin? %>
+  <div class="row">
+    <div class="col-md-6">
+      <%= form_with(model: [:admin, user], local: true) do |form| %>
+        <%= form.hidden_field :role, value: 'normal' %>
+        <div class="actions">
+          <%= form.submit 'Remove Admin', class: 'btn btn-success btn-sm' %>
+        </div>
+      <% end %>
+    </div>
+<!--    <div class="col-md-6">-->
+<!--      <button class="btn btn-danger btn-sm" disabled>Set As Admin</button>-->
+<!--    </div>-->
+  </div>
+<% else %>
+  <div class="row">
+<!--    <div class="col-md-6 ">-->
+<!--      <button class="btn btn-success btn-sm" disabled>Remove Admin</button>-->
+<!--    </div>-->
+    <div class="col-md-6">
+      <%= form_with(model: [:admin, user], local: true) do |form| %>
+        <%= form.hidden_field :role, value: 'admin' %>
+        <div class="actions">
+          <%= form.submit 'Set as Admin', class: 'btn btn-danger btn-sm' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>

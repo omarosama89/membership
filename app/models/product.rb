@@ -3,7 +3,7 @@ class Product < ApplicationRecord
 
   validates :name, :price, :images, presence: true
 
-  attribute :dicount, :float, default: 0
+  attribute :discount, :float, default: 0
 
   def discounted_price
     price = self.price * (1 - (self.discount / 100))

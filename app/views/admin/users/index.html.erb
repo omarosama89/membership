@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+<div class="col-lg-12 col-md-12 mb-12">
+  <h1>Users</h1>
+  <br>
+  <div class="row">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Email</th>
+          <th scope="col">Role</th>
+          <th scope="col" colspan="2">Premium Member</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= user.id %></td>
+            <td><%= user.email %></td>
+            <td><span class="badge <%= user.admin? ? 'badge-danger' : 'badge-info' %>"><%= user.role %></span></td>
+            <% if user.admin? %>
+              <td><span class="badge badge-warning">--</span></td>
+              <td></td>
+            <%else%>
+              <td><span class="badge <%= user.premium_membership.present? ? 'badge-success' : 'badge-danger' %>"><%= user.premium_membership.present? ? 'Yes' : 'No' %></span></td>
+              <td><%= render 'premium_membership_form', user: user %></td>
+            <%end%>
+            <td></td>
+            <td><%= render 'role_form', user: user %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

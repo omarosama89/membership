@@ -1,0 +1,17 @@
+<% if user.premium_membership.present? %>
+  <div class="row">
+    <div class="col-md-6">
+      <%= link_to admin_premium_membership_path(user.premium_membership), method: :delete, data: {confirm: 'Are you sure?'} do %>
+        <i class="fa fa-trash"></i>
+      <% end %>
+    </div>
+  </div>
+<% else %>
+  <div class="row">
+    <div class="col-md-6">
+      <%= link_to admin_premium_memberships_path(user_id: user.id), method: :post do %>
+        <i class="fa fa-plus"></i>
+      <% end %>
+    </div>
+  </div>
+<% end %>

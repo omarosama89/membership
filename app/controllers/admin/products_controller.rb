@@ -1,4 +1,5 @@
 class Admin::ProductsController < AuthenticatedController
+  before_action :has_authority?
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   # GET /products
