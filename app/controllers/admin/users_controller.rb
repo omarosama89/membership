@@ -2,7 +2,7 @@ class Admin::UsersController < AuthenticatedController
   before_action :has_authority?
   before_action :set_user, only: [:show, :update]
   def index
-    @users = []
+    @users = User.all
   end
 
   def show
