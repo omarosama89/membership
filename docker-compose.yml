@@ -1,0 +1,22 @@
+postgres:
+  image: postgres:9.4.5
+  environment:
+    POSTGRES_USER: omar
+    POSTGRES_PASSWORD: 123
+  ports:
+    - '5432:5432'
+  volumes:
+    - membership-postgres:/var/lib/postgresql/data
+
+
+membership:
+  build: .
+  restart: always
+  links:
+    - postgres
+  volumes:
+    - .:/drkiq
+  ports:
+    - '3000:3000'
+  env_file:
+    - membership.env
