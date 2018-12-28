@@ -1,7 +1,7 @@
 <div id="carouselExampleIndicators-<%= product.id %>" class="carousel slide my-4" data-ride="carousel">
   <ol class="carousel-indicators">
     <% product.images.each_with_index do |image, idx| %>
-      <li data-target="#carouselExampleIndicators-<%= product.id %>" data-slide-to="<%= idx %>" class="<%= 'active' if idx == 0 %>"</li>
+      <li data-target="#carouselExampleIndicators-<%= product.id %>" data-slide-to="<%= idx %>" class="<%= 'active' if idx == 0 %>"></li>
     <% end %>
   </ol>
   <div class="carousel-inner" role="listbox">
