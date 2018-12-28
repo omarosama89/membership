@@ -17,7 +17,3 @@ user = User.create(email: 'normal2@honestbee.com', password: '12345678', passwor
 # Add premium membership for user `normal2@honestbee.com`
 PremiumMembership.create(user: user)
 
-# Add 6 products
-(0..11).to_a.each do |idx|
-  Product.create(name: "product-#{idx}", price: (rand() * 100).to_f.round(2), discount: (rand * 100).to_i, images: (0..9).map(&:to_s).map{|x| "p#{x}.jpg"}.map{|x| Rack::Test::UploadedFile.new(Rails.root.join("spec/support/#{x}"), 'image/jpeg')}.sample([3,4,5,6,7].sample))
-end
